@@ -33,6 +33,7 @@ var logger = log.New(os.Stdout, "", log.LUTC)
 const (
 	configFile      = ".kubectl-login.json"
 	exampleAppState = "login"
+	timeout         = time.Second * 120
 )
 
 type configuration struct {
@@ -218,7 +219,7 @@ func cmd() *cobra.Command {
 
 			a.switchContext()
 			if isLoggedIn() {
-				log.Printf("Logged in: %v)", cluster)
+				log.Printf("Logged in: %v", cluster)
 				os.Exit(0)
 			}
 
@@ -292,6 +293,11 @@ func cmd() *cobra.Command {
 
 			http.HandleFunc("/", a.handleLogin)
 			http.HandleFunc(u.Path, a.handleCallback)
+			timer := time.AfterFunc(timeout, func() {
+				log.Printf("Login timeout... exiting")
+				a.shutdownChan <- true
+			})
+			defer timer.Stop()
 
 			switch listenURL.Scheme {
 			case "http":
