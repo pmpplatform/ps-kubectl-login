@@ -218,7 +218,7 @@ func cmd() *cobra.Command {
 
 			a.switchContext()
 			if isLoggedIn() {
-				log.Printf("Logged in: %v)", cluster)
+				log.Printf("Logged in: %v", cluster)
 				os.Exit(0)
 			}
 
