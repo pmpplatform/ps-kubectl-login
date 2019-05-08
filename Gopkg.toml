@@ -1,0 +1,24 @@
+[[constraint]]
+  branch = "v2"
+  name = "github.com/coreos/go-oidc"
+
+[[constraint]]
+  revision = "ca24023cc0175fdf372518cb1c5062cc86db2634"
+  name = "github.com/logrusorgru/aurora"
+
+[[constraint]]
+  branch = "master"
+  name = "golang.org/x/oauth2"
+
+
+[[constraint]]
+  branch = "master"
+  name = "github.com/spf13/cobra"
+
+[[constraint]]
+  branch = "master"
+  name = "k8s.io/client-go"
+
+[prune]
+  go-tests = true
+  unused-packages = true
