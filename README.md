@@ -18,7 +18,7 @@ A kubectl plugin for dex
   "clstr02": {
     "client-id": "clstr02-dex",
     "client-secret": "LKhkljhdf0JHh3hfolUlkj",
-    "issuer": "https://clstr01-dex.yourdomain.com/dex",
+    "issuer": "https://clstr02-dex.yourdomain.com/dex",
     "redirect-uri": "http://127.0.0.1:5555/callback",
     "aliases": ["testing"]
   }
@@ -41,9 +41,9 @@ A kubectl plugin for dex
 
 ## Release
 ### Build binaries
-* `GOOS=linux GOARCH=amd64 go build -o kubectl-login-linux .`
-* `GOOS=darwin GOARCH=amd64 go build -o kubectl-login-darwin .`
-* `GOOS=windows GOARCH=amd64 go build -o kubectl-login-windows.exe .`
+* `GOOS=linux GOARCH=amd64 go build -o bin/kubectl-login-linux .`
+* `GOOS=darwin GOARCH=amd64 go build -o bin/kubectl-login-darwin .`
+* `GOOS=windows GOARCH=amd64 go build -o bin/kubectl-login-windows.exe .`
 
 ### Create Github Release
 * Upload the binaries on the release

@@ -5,3 +5,4 @@ kubectl-login-*
 vendor/
 bin/
 Gopkg.lock
+.DS_Store
