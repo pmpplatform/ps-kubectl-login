@@ -9,17 +9,11 @@ A kubectl plugin for dex
 ```
 {
   "clstr01": {
-    "client-id": "clstr01-dex",
-    "client-secret": "LKJfsdfhlKLhfsd0jhsdf",
-    "issuer": "https://clstr01-dex.yourdomain/dex",
-    "redirect-uri": "http://127.0.0.1:5555/callback",
+    "dex-url": "https://clstr01-login.privatedns.zone/",
     "aliases": ["development", "staging", "qa"]
   },
   "clstr02": {
-    "client-id": "clstr02-dex",
-    "client-secret": "LKhkljhdf0JHh3hfolUlkj",
-    "issuer": "https://clstr02-dex.yourdomain.com/dex",
-    "redirect-uri": "http://127.0.0.1:5555/callback",
+    "dex-url": "https://clstr02-login.privatedns.zone/",
     "aliases": ["testing"]
   }
 }
@@ -43,7 +37,6 @@ A kubectl plugin for dex
 ### Build binaries
 * `GOOS=linux GOARCH=amd64 go build -o bin/kubectl-login-linux .`
 * `GOOS=darwin GOARCH=amd64 go build -o bin/kubectl-login-darwin .`
-* `GOOS=windows GOARCH=amd64 go build -o bin/kubectl-login-windows.exe .`
 
 ### Create Github Release
 * Upload the binaries on the release
@@ -52,5 +45,5 @@ A kubectl plugin for dex
 * rename the binary to kubectl-login and place somewhere in on your PATH
 * create .kubectl-login.json in your home directory
 * execute `kubectl login [alias]` - e.g. `kubectl login development`
-* If your token has expired, the dex login page will be opened in your browser. After login, your kube config will be updated with your new token and your context will be changed to the selected cluster/namespace.
+* If your token has expired, you will be prompted for credentials. After login, your kube config will be updated with your new token and your context will be changed to the selected cluster/namespace.
 
