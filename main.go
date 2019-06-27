@@ -1,7 +1,6 @@
 package main
 
 import (
-	"bufio"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
@@ -9,13 +8,12 @@ import (
 	"os"
 	"os/exec"
 	"strings"
-	"syscall"
 	"time"
 
 	"github.com/headzoo/surf/browser"
 	. "github.com/logrusorgru/aurora"
+	"github.com/manifoldco/promptui"
 	"github.com/spf13/cobra"
-	"golang.org/x/crypto/ssh/terminal"
 	"gopkg.in/headzoo/surf.v1"
 )
 
@@ -23,7 +21,7 @@ var logger = log.New(os.Stdout, "", log.LUTC)
 
 const (
 	configFile = ".kubectl-login.json"
-	timeout = time.Second * 120
+	timeout    = time.Second * 120
 )
 
 type configuration struct {
@@ -35,7 +33,6 @@ type app struct {
 	cluster   string
 	namespace string
 }
-
 
 func main() {
 	if err := cmd().Execute(); err != nil {
@@ -137,18 +134,26 @@ func cmd() *cobra.Command {
 func login(cluster string, url string) error {
 	for {
 		fmt.Printf("Logging in to cluster %s\n", cluster)
-		reader := bufio.NewReader(os.Stdin)
-		fmt.Printf("username: ")
-		username, _ := reader.ReadString('\n')
-		fmt.Printf("password: ")
-		bytePassword, _ := terminal.ReadPassword(int(syscall.Stdin))
-		password := string(bytePassword)
-		fmt.Println("")
+		prompt := promptui.Prompt{
+			Label: "Username: ",
+		}
+		username, err := prompt.Run()
+		if err != nil {
+			return err
+		}
+		prompt = promptui.Prompt{
+			Label: "Password: ",
+			Mask:  '*',
+		}
+		password, err := prompt.Run()
+		if err != nil {
+			return err
+		}
 		bow := surf.NewBrowser()
 		bow.SetAttribute(browser.SendReferer, true)
 		bow.SetAttribute(browser.MetaRefreshHandling, true)
 		bow.SetAttribute(browser.FollowRedirects, true)
-		err := bow.Open(url)
+		err = bow.Open(url)
 		if err != nil {
 			return err
 		}
@@ -177,7 +182,7 @@ func login(cluster string, url string) error {
 			fmt.Printf("%s\n\n", strings.TrimSpace(resp))
 			continue
 		}
-		// 
+		//
 		resp = bow.Dom().Find("#idMergeConfig").Text()
 		if resp != "" {
 			err := kubeMerge(strings.TrimSpace(resp))
@@ -190,7 +195,7 @@ func login(cluster string, url string) error {
 	}
 }
 
-func kubeMerge (config string) error {
+func kubeMerge(config string) error {
 	cmd := exec.Command("/bin/sh", "-c", config)
 	err := cmd.Run()
 	if err != nil {
