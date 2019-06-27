@@ -35,8 +35,7 @@ A kubectl plugin for dex
 
 ## Release
 ### Build binaries
-* `GOOS=linux GOARCH=amd64 go build -o bin/kubectl-login-linux .`
-* `GOOS=darwin GOARCH=amd64 go build -o bin/kubectl-login-darwin .`
+* `make pack`
 
 ### Create Github Release
 * Upload the binaries on the release
