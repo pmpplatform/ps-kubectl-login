@@ -1,5 +1,4 @@
 kubectl-login-*
-.kubectl-login.json
 .idea/
 *.exe
 vendor/

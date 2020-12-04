@@ -1,0 +1,91 @@
+{
+  "cph1-k8s-clstr01": {
+    "dex-url": "https://cph1-k8s-clstr01-login.privatedns.zone/",
+    "aliases": [
+      "cph-migration",
+      "cph-secure",
+      "cph-development"
+    ]
+  },
+  "cph1-qua-k8s-000": {
+    "dex-url": "https://cph1-qua-k8s-000-login.privatedns.zone/",
+    "aliases": [
+      "cph1-qua-k8s-000"
+    ]
+  },
+  "cph1-dev-k8s-000": {
+    "dex-url": "https://cph1-dev-k8s-000-login.privatedns.zone/",
+    "aliases": [
+      "cph1-dev-k8s-000",
+      "partnerdev",
+      "development"
+    ]
+  },
+  "odn1-k8s-clstr02": {
+    "dex-url": "https://odn1-k8s-clstr02-login.privatedns.zone/",
+    "aliases": [
+      "demo",
+      "psno-sandbox"
+    ]
+  },
+  "odn1-k8s-clstr04": {
+    "dex-url": "https://odn1-k8s-clstr04-login.privatedns.zone/",
+    "aliases": [
+      "hem",
+      "hp",
+      "qa"
+    ]
+  },
+  "osl1-k8s-clstr01": {
+    "dex-url": "http://osl1-k8s-clstr01-login.privatedns.zone/",
+    "aliases": [
+      "psno"
+    ]
+  },
+  "sto1-k8s-clstr01": {
+    "dex-url": "https://sto1-k8s-clstr01-login.privatedns.zone",
+    "aliases": [
+      "triforkdev",
+      "at",
+      "psfi-dev",
+      "psfi-qa"
+    ]
+  },
+  "sto1-pfi-k8s-000": {
+    "dex-url": "https://sto1-pfi-k8s-000-login.privatedns.zone/",
+    "aliases": [
+      "psfi"
+    ]
+  },
+  "sto1-pfi-k8s-100": {
+    "dex-url": "https://sto1-pfi-k8s-100-login.privatedns.zone/",
+    "aliases": [
+      "psfi-ceph"
+    ]
+  },
+  "sto1-pee-k8s-000": {
+    "dex-url": "https://sto1-pee-k8s-000-login.privatedns.zone/",
+    "aliases": [
+      "pee"
+    ]
+  },
+  "sto1-pee-k8s-100": {
+    "dex-url": "https://sto1-pee-k8s-100-login.privatedns.zone/",
+    "aliases": [
+      "pee-ceph"
+    ]
+  },
+  "sto1-ppt-k8s-000": {
+    "dex-url": "https://sto1-ppt-k8s-000-login.privatedns.zone/",
+    "aliases": [
+      "partner"
+    ]
+  },
+  "odn1-inf-k8s": {
+    "dex-url": "https://odn1-inf-k8s-login.privatedns.zone/",
+    "aliases": [
+      "test",
+      "odn1-inf-k8s"
+    ]
+  }
+}
