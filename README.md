@@ -22,18 +22,6 @@ A kubectl plugin for dex
 
 # Releases
 
-## Install dep
-
-### Mac
-`brew install dep` / `brew upgrade dep`
-
-### Other Platforms
-`curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh`
-
-## Run dep ensure
-`dep ensure`
-
-## Release
 ### Build binaries
 * `make pack`
 
@@ -42,7 +30,7 @@ A kubectl plugin for dex
 
 ## How to use
 * rename the binary to kubectl-login and place somewhere in on your PATH
-* create .kubectl-login.json in your home directory
+* create .kubectl-login.json in your home directory, or execute `kubectl login -u` to download the config file from this repo
 * execute `kubectl login [alias]` - e.g. `kubectl login development`
 * If your token has expired, you will be prompted for credentials. After login, your kube config will be updated with your new token and your context will be changed to the selected cluster/namespace.
 
