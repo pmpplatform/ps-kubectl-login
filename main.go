@@ -3,10 +3,13 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"io"
 	"io/ioutil"
 	"log"
+	"net/http"
 	"os"
 	"os/exec"
+	"path/filepath"
 	"strings"
 	"time"
 
@@ -20,8 +23,9 @@ import (
 var logger = log.New(os.Stdout, "", log.LUTC)
 
 const (
-	configFile = ".kubectl-login.json"
-	timeout    = time.Second * 120
+	configFile       = ".kubectl-login.json"
+	remoteConfigFile = "https://raw.githubusercontent.com/pasientskyhosting/ps-kubectl-login/master/.kubectl-login.json"
+	timeout          = time.Second * 120
 )
 
 type configuration struct {
@@ -34,11 +38,82 @@ type app struct {
 	namespace string
 }
 
+var update bool
+
+var cmd = &cobra.Command{
+	Use:   "kubectl login [namespace]",
+	Short: "Authenticates users against OIDC and writes the required kubeconfig.",
+	Long:  "",
+	// Args:  cobra.MinimumNArgs(1),
+	PreRunE: func(cmd *cobra.Command, args []string) error {
+		if update {
+			fmt.Println("Updating config...")
+			err := downloadFile(configFile, remoteConfigFile)
+			if err != nil {
+				logger.Printf("error: failed to download config file: %v", err)
+				return err
+			}
+		}
+		return nil
+	},
+	RunE: func(cmd *cobra.Command, args []string) error {
+		if len(args) == 0 {
+			cmd.Help()
+			os.Exit(1)
+		}
+		var a app
+		rawConfig := getRawConfig()
+		alias := getAlias(os.Args[1:])
+		config, cluster := getConfigByAlias(alias, rawConfig)
+		a.namespace = alias
+		a.cluster = cluster
+		timer := time.AfterFunc(timeout, func() {
+			log.Printf("\nLogin timeout... exiting")
+			os.Exit(0)
+		})
+		defer timer.Stop()
+		a.switchContext()
+		if isLoggedIn() {
+			log.Printf("Logged in: %v", cluster)
+			os.Exit(0)
+		}
+		return login(cluster, config.DexURL)
+	},
+}
+
+func init() {
+	cmd.Flags().BoolVarP(&update, "update", "u", false, "update config file from github")
+}
+
 func main() {
-	if err := cmd().Execute(); err != nil {
+	if err := cmd.Execute(); err != nil {
 		fmt.Fprintf(os.Stderr, "error: %v\n", err)
 		os.Exit(2)
 	}
+}
+
+func downloadFile(filename string, url string) error {
+	home, err := os.UserHomeDir()
+	if err != nil {
+		return err
+	}
+	// Get the data
+	resp, err := http.Get(url)
+	if err != nil {
+		return err
+	}
+	defer resp.Body.Close()
+
+	// Create the file
+	out, err := os.Create(filepath.Join(home, filename))
+	if err != nil {
+		return err
+	}
+	defer out.Close()
+
+	// Write the body to file
+	_, err = io.Copy(out, resp.Body)
+	return err
 }
 
 func getRawConfig() map[string]*configuration {
@@ -98,37 +173,6 @@ func containsAlias(c *configuration, s string) bool {
 		}
 	}
 	return false
-}
-
-func cmd() *cobra.Command {
-	var a app
-
-	c := cobra.Command{
-		Use:   "kubectl login [namespace]",
-		Short: "Authenticates users against OIDC and writes the required kubeconfig.",
-		Long:  "",
-		Args:  cobra.MinimumNArgs(1),
-		RunE: func(cmd *cobra.Command, args []string) error {
-
-			rawConfig := getRawConfig()
-			alias := getAlias(os.Args[1:])
-			config, cluster := getConfigByAlias(alias, rawConfig)
-			a.namespace = alias
-			a.cluster = cluster
-			timer := time.AfterFunc(timeout, func() {
-				log.Printf("\nLogin timeout... exiting")
-				os.Exit(0)
-			})
-			defer timer.Stop()
-			a.switchContext()
-			if isLoggedIn() {
-				log.Printf("Logged in: %v", cluster)
-				os.Exit(0)
-			}
-			return login(cluster, config.DexURL)
-		},
-	}
-	return &c
 }
 
 func login(cluster string, url string) error {
