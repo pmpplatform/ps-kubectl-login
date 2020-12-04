@@ -18,7 +18,9 @@
     "aliases": [
       "cph1-dev-k8s-000",
       "partnerdev",
-      "development"
+      "development",
+      "hp",
+      "hem"
     ]
   },
   "odn1-k8s-clstr02": {
@@ -31,8 +33,6 @@
   "odn1-k8s-clstr04": {
     "dex-url": "https://odn1-k8s-clstr04-login.privatedns.zone/",
     "aliases": [
-      "hem",
-      "hp",
       "qa"
     ]
   },
