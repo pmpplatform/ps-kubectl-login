@@ -38,7 +38,7 @@ type app struct {
 	namespace string
 }
 
-var update bool
+var update, list bool
 
 var cmd = &cobra.Command{
 	Use:   "kubectl login [namespace]",
@@ -53,6 +53,16 @@ var cmd = &cobra.Command{
 				logger.Printf("error: failed to download config file: %v", err)
 				return err
 			}
+		}
+		if list {
+			rawConfig := getRawConfig()
+			fmt.Printf("%-16s  %s\n", "Cluster", "Alias")
+			for k, v := range rawConfig {
+				for _, alias := range v.Aliases {
+					fmt.Printf("%-16s: %s\n", k, alias)
+				}
+			}
+			os.Exit(1)
 		}
 		return nil
 	},
@@ -83,6 +93,7 @@ var cmd = &cobra.Command{
 
 func init() {
 	cmd.Flags().BoolVarP(&update, "update", "u", false, "update config file from github")
+	cmd.Flags().BoolVarP(&list, "list", "l", false, "list aliases")
 }
 
 func main() {
