@@ -10,7 +10,8 @@
   "cph1-qua-k8s-000": {
     "dex-url": "https://cph1-qua-k8s-000-login.privatedns.zone/",
     "aliases": [
-      "cph1-qua-k8s-000"
+      "cph1-qua-k8s-000",
+      "qa"
     ]
   },
   "cph1-dev-k8s-000": {
@@ -28,12 +29,6 @@
     "aliases": [
       "demo",
       "psno-sandbox"
-    ]
-  },
-  "odn1-k8s-clstr04": {
-    "dex-url": "https://odn1-k8s-clstr04-login.privatedns.zone/",
-    "aliases": [
-      "qa"
     ]
   },
   "osl1-k8s-clstr01": {
