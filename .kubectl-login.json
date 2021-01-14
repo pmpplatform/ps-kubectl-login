@@ -71,11 +71,11 @@
       "partner"
     ]
   },
-  "cph1-tst-k8s": {
-    "dex-url": "https://cph1-tst-k8s-login.privatedns.zone/",
+  "cph1-tst-k8s-000": {
+    "dex-url": "https://cph1-tst-k8s-000-login.privatedns.zone/",
     "aliases": [
       "test",
-      "cph1-tst-k8s"
+      "cph1-tst-k8s-000"
     ]
   }
 }
