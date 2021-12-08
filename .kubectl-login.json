@@ -53,18 +53,6 @@
       "psfi-ceph"
     ]
   },
-  "sto1-pee-k8s-000": {
-    "dex-url": "https://sto1-pee-k8s-000-login.privatedns.zone/",
-    "aliases": [
-      "pee"
-    ]
-  },
-  "sto1-pee-k8s-100": {
-    "dex-url": "https://sto1-pee-k8s-100-login.privatedns.zone/",
-    "aliases": [
-      "pee-ceph"
-    ]
-  },
   "sto1-ppt-k8s-000": {
     "dex-url": "https://sto1-ppt-k8s-000-login.privatedns.zone/",
     "aliases": [
