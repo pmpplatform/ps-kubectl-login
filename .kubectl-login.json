@@ -23,7 +23,8 @@
       "partnerdev",
       "development",
       "hp",
-      "hem"
+      "hem",
+      "paas-config-dev"
     ]
   },
   "osl1-k8s-clstr01": {
