@@ -66,5 +66,16 @@
       "test",
       "cph1-tst-k8s-000"
     ]
+  },
+  "cph2-pmpdev-k8s-000": {
+    "dex-url": "https://cph2-pmpdev-k8s-000-login.patientsky.zone/",
+    "aliases": [
+      "cph2-pmpdev-k8s-000",
+      "pmp-dev-1",
+      "pmp-dev-2",
+      "pmp-dev-3",
+      "pmp-dev-4",
+      "pmp-dev-5"
+    ]
   }
 }
