@@ -75,7 +75,19 @@
       "pmp-dev-2",
       "pmp-dev-3",
       "pmp-dev-4",
-      "pmp-dev-5"
+      "pmp-dev-5",
+      "pmp-ci",
+      "pmp-staging"
+    ]
+  },
+  "cph2-pltdev-k8s-000": {
+    "dex-url": "https://cph2-pltdev-k8s-000-login.patientsky.zone/",
+    "aliases": [
+      "cph2-pltdev-k8s-000",
+      "plt-dev",
+      "plt-qa",
+      "plt-demo",
+      "plt-staging"
     ]
   }
 }
