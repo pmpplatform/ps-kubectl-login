@@ -89,5 +89,11 @@
       "plt-demo",
       "plt-staging"
     ]
+  },
+  "cph2-inf-k8s-000": {
+    "dex-url": "https://cph2-inf-k8s-000-login.patientsky.zone/",
+    "aliases": [
+      "cph2-inf-k8s-000"
+    ]
   }
 }
