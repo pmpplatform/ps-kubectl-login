@@ -12,6 +12,7 @@
     "aliases": [
       "cph1-qua-k8s-000",
       "qa",
+      "at",
       "demo",
       "psno-sandbox"
     ]
@@ -37,7 +38,6 @@
     "dex-url": "https://sto1-k8s-clstr01-login.privatedns.zone",
     "aliases": [
       "triforkdev",
-      "at",
       "psfi-dev",
       "psfi-qa"
     ]
