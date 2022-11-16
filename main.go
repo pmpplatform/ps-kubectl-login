@@ -24,7 +24,7 @@ var logger = log.New(os.Stdout, "", log.LUTC)
 
 const (
 	configFile       = ".kubectl-login.json"
-	remoteConfigFile = "https://raw.githubusercontent.com/pasientskyhosting/ps-kubectl-login/master/.kubectl-login.json"
+	remoteConfigFile = "https://raw.githubusercontent.com/pmpplatform/ps-kubectl-login/master/.kubectl-login.json"
 	timeout          = time.Second * 120
 )
 
