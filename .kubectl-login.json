@@ -96,5 +96,17 @@
     "aliases": [
       "cph2-inf-k8s-000"
     ]
+  },
+  "osl2-dev-k8s-000": {
+    "dex-url": "https://osl2-dev-k8s-000-login.privatedns.zone/",
+    "aliases": [
+      "osl2-dev-k8s-000"
+    ]
+  },
+  "osl2-inf-k8s-000": {
+    "dex-url": "https://osl2-inf-k8s-000-login.privatedns.zone/",
+    "aliases": [
+      "osl2-inf-k8s-000"
+    ]
   }
 }
