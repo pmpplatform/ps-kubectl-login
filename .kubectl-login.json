@@ -91,6 +91,12 @@
       "plt-staging"
     ]
   },
+  "cph2-prod-k8s-000": {
+    "dex-url": "https://cph2-prod-k8s-000-login.uniscale.zone/",
+    "aliases": [
+      "cph2-prod-k8s-000"
+    ]
+  },
   "cph2-inf-k8s-000": {
     "dex-url": "https://cph2-inf-k8s-000-login.patientsky.zone/",
     "aliases": [
