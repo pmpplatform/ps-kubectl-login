@@ -119,7 +119,8 @@
       "ps-mig-2",
       "ps-demo-1",
       "ps-sandbox-1",
-      "ps-stg-1"
+      "ps-stg-1",
+      "ps-partnerdev-1"
     ]
   },
   "osl2-inf-k8s-000": {
