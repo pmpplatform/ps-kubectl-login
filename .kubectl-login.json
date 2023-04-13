@@ -1,94 +1,14 @@
 {
-  "cph1-k8s-clstr01": {
-    "dex-url": "https://cph1-k8s-clstr01-login.privatedns.zone/",
-    "aliases": [
-      "cph-migration",
-      "cph-secure",
-      "cph-development"
-    ]
-  },
-  "cph1-qua-k8s-000": {
-    "dex-url": "https://cph1-qua-k8s-000-login.privatedns.zone/",
-    "aliases": [
-      "cph1-qua-k8s-000",
-      "qa",
-      "at",
-      "demo",
-      "psno-sandbox"
-    ]
-  },
-  "cph1-dev-k8s-000": {
-    "dex-url": "https://cph1-dev-k8s-000-login.privatedns.zone/",
-    "aliases": [
-      "cph1-dev-k8s-000",
-      "partnerdev",
-      "development",
-      "hp",
-      "hem",
-      "paas-config-dev"
-    ]
-  },
-  "osl1-k8s-clstr01": {
-    "dex-url": "http://osl1-k8s-clstr01-login.privatedns.zone/",
-    "aliases": [
-      "psno"
-    ]
-  },
-  "sto1-k8s-clstr01": {
-    "dex-url": "https://sto1-k8s-clstr01-login.privatedns.zone",
-    "aliases": [
-      "triforkdev",
-      "psfi-dev",
-      "psfi-qa"
-    ]
-  },
-  "sto1-pfi-k8s-000": {
-    "dex-url": "https://sto1-pfi-k8s-000-login.privatedns.zone/",
-    "aliases": [
-      "psfi"
-    ]
-  },
-  "sto1-pfi-k8s-100": {
-    "dex-url": "https://sto1-pfi-k8s-100-login.privatedns.zone/",
-    "aliases": [
-      "psfi-ceph"
-    ]
-  },
-  "sto1-ppt-k8s-000": {
-    "dex-url": "https://sto1-ppt-k8s-000-login.privatedns.zone/",
-    "aliases": [
-      "partner"
-    ]
-  },
-  "cph1-tst-k8s-000": {
-    "dex-url": "https://cph1-tst-k8s-000-login.privatedns.zone/",
-    "aliases": [
-      "test",
-      "cph1-tst-k8s-000"
-    ]
-  },
   "cph2-pmpdev-k8s-000": {
     "dex-url": "https://cph2-pmpdev-k8s-000-login.patientsky.zone/",
     "aliases": [
       "cph2-pmpdev-k8s-000",
       "pmp-dev-1",
-      "pmp-dev-2",
       "pmp-dev-3",
       "pmp-dev-4",
       "pmp-dev-5",
-      "pmp-dev-6",
       "pmp-ci",
       "pmp-staging"
-    ]
-  },
-  "cph2-pltdev-k8s-000": {
-    "dex-url": "https://cph2-pltdev-k8s-000-login.patientsky.zone/",
-    "aliases": [
-      "cph2-pltdev-k8s-000",
-      "plt-dev",
-      "plt-qa",
-      "plt-demo",
-      "plt-staging"
     ]
   },
   "cph2-prod-k8s-000": {
@@ -104,32 +24,6 @@
       "cph2-inf-k8s-000"
     ]
   },
-  "osl2-dev-k8s-000": {
-    "dex-url": "https://osl2-dev-k8s-000-login.patientsky.zone/",
-    "aliases": [
-      "osl2-dev-k8s-000",
-      "ps-dev-1",
-      "ps-dev-2",
-      "ps-dev-3",
-      "ps-dev-4",
-      "ps-qa-1",
-      "ps-qa-2",
-      "ps-qa-3",
-      "ps-qa-4",
-      "ps-mig-1",
-      "ps-mig-2",
-      "ps-demo-1",
-      "ps-sandbox-1",
-      "ps-stg-1",
-      "ps-partnerdev-1"
-    ]
-  },
-  "osl2-inf-k8s-000": {
-    "dex-url": "https://osl2-inf-k8s-000-login.patientsky.zone/",
-    "aliases": [
-      "osl2-inf-k8s-000"
-    ]
-  },
   "cph2-inf-k8s-100": {
     "dex-url": "https://cph2-inf-k8s-100-login.uniscale.zone/",
     "aliases": [
@@ -139,8 +33,9 @@
   "cph2-dev-k8s-000": {
     "dex-url": "https://cph2-dev-k8s-000-login.uniscale.zone/",
     "aliases": [
-      "cph2-dev-k8s-000"
+      "cph2-dev-k8s-000",
+      "pmp-dev-2",
+      "pmp-dev-6"
     ]
   }
-
 }
