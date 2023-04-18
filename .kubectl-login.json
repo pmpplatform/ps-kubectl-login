@@ -5,7 +5,6 @@
       "cph2-pmpdev-k8s-000",
       "pmp-dev-1",
       "pmp-dev-3",
-      "pmp-dev-4",
       "pmp-dev-5",
       "pmp-ci",
       "pmp-staging"
@@ -35,6 +34,7 @@
     "aliases": [
       "cph2-dev-k8s-000",
       "pmp-dev-2",
+      "pmp-dev-4",
       "pmp-dev-6"
     ]
   }
