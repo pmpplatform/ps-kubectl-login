@@ -38,5 +38,37 @@
       "pmp-dev-6",
       "pmp-beta"
     ]
+  },
+  "osl2-dev-k8s-000": {
+    "dex-url": "https://osl2-dev-k8s-000-login.patientsky.zone/",
+    "aliases": [
+      "osl2-dev-k8s-000",
+      "ps-dev-1",
+      "ps-dev-2",
+      "ps-dev-3",
+      "ps-dev-4",
+      "ps-qa-1",
+      "ps-qa-2",
+      "ps-qa-3",
+      "ps-qa-4",
+      "ps-mig-1",
+      "ps-mig-2",
+      "ps-demo-1",
+      "ps-sandbox-1",
+      "ps-stg-1",
+      "ps-partnerdev-1"
+    ]
+  },
+  "osl2-inf-k8s-000": {
+    "dex-url": "https://osl2-inf-k8s-000-login.patientsky.zone/",
+    "aliases": [
+      "osl2-inf-k8s-000"
+    ]
+  },
+  "osl1-k8s-clstr01": {
+    "dex-url": "http://osl1-k8s-clstr01-login.privatedns.zone/",
+    "aliases": [
+      "psno"
+    ]
   }
 }
