@@ -13,7 +13,8 @@
     "dex-url": "https://cph2-prod-k8s-000-login.uniscale.zone/",
     "aliases": [
       "cph2-prod-k8s-000",
-      "uni-systems-api"
+      "uni-services",
+      "uni-frontend"
     ]
   },
   "cph2-inf-k8s-000": {
