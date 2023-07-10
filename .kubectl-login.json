@@ -38,5 +38,12 @@
       "pmp-dev-4",
       "pmp-dev-6"
     ]
+  },
+  "cph2-private-k8s-000": {
+    "dex-url": "https://cph2-private-k8s-000-login.uniscale.zone/",
+    "aliases": [
+      "cph2-private-k8s-000"
+    ]
   }
+
 }
