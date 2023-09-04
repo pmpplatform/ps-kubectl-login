@@ -47,7 +47,10 @@
       "core-dev",
       "ci",
       "bi-qa",
-      "bi-dev"
+      "bi-dev",
+      "account-dev",
+      "account-qa",
+      "thirdpartyintegration"
     ]
   },
   "cph2-private-k8s-000": {
