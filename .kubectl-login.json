@@ -90,6 +90,12 @@
     "aliases": [
       "psno"
     ]
+  },
+  "cph2-tst-k8s-000": {
+    "dex-url": "https://cph2-tst-k8s-000-login.uniscale.zone/",
+    "aliases": [
+      "cph2-tst-k8s-000"
+    ]
   }
 
 }
