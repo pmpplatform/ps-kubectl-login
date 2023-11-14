@@ -308,6 +308,8 @@ gopkg.in/check.v1 v1.0.0-20180628173108-788fd7840127/go.mod h1:Co6ibVJAznAaIkqp8
 gopkg.in/errgo.v2 v2.1.0/go.mod h1:hNsd1EY+bozCKY1Ytp96fpM3vjJbqLJn88ws8XvfDNI=
 gopkg.in/headzoo/surf.v1 v1.0.0 h1:Ti4LagTvHxSdHYHf5DTqJRhY4+pQYZ0slBPlxo2IWGU=
 gopkg.in/headzoo/surf.v1 v1.0.0/go.mod h1:T0BH8276y+OPL0E4tisxCFjBVIAKGbwdYU7AS7/EpQQ=
+gopkg.in/headzoo/surf.v1 v1.0.1 h1:oDBy9b5NlTb2Hvl3hF8NN+Qy7ypC9/g5YDP85pPh13k=
+gopkg.in/headzoo/surf.v1 v1.0.1/go.mod h1:T0BH8276y+OPL0E4tisxCFjBVIAKGbwdYU7AS7/EpQQ=
 gopkg.in/ini.v1 v1.51.0/go.mod h1:pNLf8WUiyNEtQjuu5G5vTm06TEv9tsIgeAvK8hOrP4k=
 gopkg.in/resty.v1 v1.12.0/go.mod h1:mDo4pnntr5jdWRML875a/NmxYqAlA73dVijT2AXvQQo=
 gopkg.in/yaml.v2 v2.0.0-20170812160011-eb3733d160e7/go.mod h1:JAlM8MvJe8wmxCU4Bli9HhUf9+ttbYbLASfIpnQbh74=
