@@ -232,9 +232,9 @@ func login(cluster string, url string) error {
 			browserCtx,
 			RunWithTimeOut(&browserCtx, 300, chromedp.Tasks{
 				chromedp.Navigate(url),
-				chromedp.WaitVisible(`//*[@value="Login To Cluster"]`),
+				chromedp.WaitVisible(`//*[@value="Login To Cluster"]`, chromedp.BySearch),
 				chromedp.Click(`//*[@value="Login To Cluster"]`, chromedp.BySearch),
-				chromedp.Text(`#idMergeConfig`, &res, chromedp.NodeVisible),
+				chromedp.Text(`#idMergeConfig`, &res, chromedp.NodeVisible, chromedp.ByQuery),
 			}),
 		)
 		if err != nil {
