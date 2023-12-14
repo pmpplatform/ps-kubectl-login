@@ -234,7 +234,6 @@ func login(cluster string, url string) error {
 				chromedp.Navigate(url),
 				chromedp.WaitVisible(`//*[@value="Login To Cluster"]`),
 				chromedp.Click(`//*[@value="Login To Cluster"]`, chromedp.BySearch),
-				chromedp.WaitVisible("#idMergeConfig"),
 				chromedp.Text(`#idMergeConfig`, &res, chromedp.NodeVisible),
 			}),
 		)
