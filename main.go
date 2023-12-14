@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
 	"io"
@@ -13,11 +14,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/headzoo/surf/browser"
+	"github.com/chromedp/cdproto/target"
+	"github.com/chromedp/chromedp"
 	. "github.com/logrusorgru/aurora"
-	"github.com/manifoldco/promptui"
 	"github.com/spf13/cobra"
-	"gopkg.in/headzoo/surf.v1"
 )
 
 var logger = log.New(os.Stdout, "", log.LUTC)
@@ -186,61 +186,65 @@ func containsAlias(c *configuration, s string) bool {
 	return false
 }
 
+func RunWithTimeOut(ctx *context.Context, timeout time.Duration, tasks chromedp.Tasks) chromedp.ActionFunc {
+	return func(ctx context.Context) error {
+		timeoutContext, cancel := context.WithTimeout(ctx, timeout*time.Second)
+		defer cancel()
+		return tasks.Do(timeoutContext)
+	}
+}
+
 func login(cluster string, url string) error {
 	for {
 		fmt.Printf("Logging in to cluster %s\n", cluster)
-		prompt := promptui.Prompt{
-			Label: "Username: ",
-		}
-		username, err := prompt.Run()
+
+		dir, err := os.MkdirTemp("", "chromedp-example")
 		if err != nil {
-			return err
+			log.Fatal(err)
 		}
-		prompt = promptui.Prompt{
-			Label: "Password: ",
-			Mask:  '*',
-		}
-		password, err := prompt.Run()
+		defer os.RemoveAll(dir)
+		opts := append(chromedp.DefaultExecAllocatorOptions[:],
+			chromedp.DisableGPU,
+			chromedp.UserDataDir(dir),
+			chromedp.Flag("headless", false),
+		)
+
+		allocCtx, cancel := chromedp.NewExecAllocator(context.Background(), opts...)
+		defer cancel()
+
+		browserCtx, cancel := chromedp.NewContext(allocCtx)
+		defer cancel()
+
+		// bail out if the browser is closed
+		chromedp.ListenBrowser(browserCtx, func(ev interface{}) {
+			if ev, ok := ev.(*target.EventTargetDestroyed); ok {
+				if c := chromedp.FromContext(browserCtx); c != nil {
+					if c.Target.TargetID == ev.TargetID {
+						cancel()
+					}
+				}
+			}
+		})
+
+		var res string
+
+		err = chromedp.Run(
+			browserCtx,
+			RunWithTimeOut(&browserCtx, 300, chromedp.Tasks{
+				chromedp.Navigate(url),
+				chromedp.WaitVisible(`//*[@value="Login To Cluster"]`),
+				chromedp.Click(`//*[@value="Login To Cluster"]`, chromedp.BySearch),
+				chromedp.WaitVisible("#idMergeConfig"),
+				chromedp.Text(`#idMergeConfig`, &res, chromedp.NodeVisible),
+			}),
+		)
 		if err != nil {
-			return err
+			cancel()
+			log.Fatal(err)
 		}
-		bow := surf.NewBrowser()
-		bow.SetAttribute(browser.SendReferer, true)
-		bow.SetAttribute(browser.MetaRefreshHandling, true)
-		bow.SetAttribute(browser.FollowRedirects, true)
-		err = bow.Open(url)
-		if err != nil {
-			return err
-		}
-		// Submit login button
-		fm, _ := bow.Form("form")
-		err = fm.Submit()
-		if err != nil {
-			return err
-		}
-		// Log in to dex
-		fm, _ = bow.Form("form")
-		fm.Input("login", strings.TrimSpace(username))
-		fm.Input("password", strings.TrimSpace(password))
-		err = fm.Submit()
-		if err != nil {
-			return err
-		}
-		// check response
-		if bow.StatusCode() != 200 {
-			fmt.Println(strings.TrimSpace(bow.Body()))
-			continue
-		}
-		// handle login error
-		resp, _ := bow.Dom().Find("#login-error").Html()
-		if resp != "" {
-			fmt.Printf("%s\n\n", strings.TrimSpace(resp))
-			continue
-		}
-		//
-		resp = bow.Dom().Find("#idMergeConfig").Text()
-		if resp != "" {
-			err := kubeMerge(strings.TrimSpace(resp))
+
+		if res != "" {
+			err := kubeMerge(strings.TrimSpace(res))
 			if err != nil {
 				return err
 			}
