@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"io"
 	"io/ioutil"
@@ -197,16 +198,26 @@ func RunWithTimeOut(ctx *context.Context, timeout time.Duration, tasks chromedp.
 func login(cluster string, url string) error {
 	for {
 		fmt.Printf("Logging in to cluster %s\n", cluster)
-
-		dir, err := os.MkdirTemp("", "chromedp-example")
+		homedir, err := os.UserHomeDir()
 		if err != nil {
 			log.Fatal(err)
 		}
-		defer os.RemoveAll(dir)
+		dir := filepath.Join(homedir, "chromedp-kubectl-login")
+		if _, err := os.Stat(dir); errors.Is(err, os.ErrNotExist) {
+			err := os.Mkdir(dir, os.ModePerm)
+			if err != nil {
+				log.Println(err)
+			}
+		}
+		// defer os.RemoveAll(dir)
 		opts := append(chromedp.DefaultExecAllocatorOptions[:],
-			chromedp.DisableGPU,
 			chromedp.UserDataDir(dir),
+			chromedp.WindowSize(1024, 1024),
+			chromedp.Flag("hide-crash-restore-bubble", true),
+			chromedp.Flag("disable-features", "InfiniteSessionRestore,Translate"),
+			chromedp.Flag("window-position", "x,y"),
 			chromedp.Flag("headless", false),
+			chromedp.Flag("disable-extensions", true),
 		)
 
 		allocCtx, cancel := chromedp.NewExecAllocator(context.Background(), opts...)
