@@ -206,7 +206,7 @@ func login(cluster string, url string) error {
 		if _, err := os.Stat(dir); errors.Is(err, os.ErrNotExist) {
 			err := os.Mkdir(dir, os.ModePerm)
 			if err != nil {
-				log.Println(err)
+				log.Fatal(err)
 			}
 		}
 		// defer os.RemoveAll(dir)
