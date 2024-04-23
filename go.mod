@@ -3,11 +3,8 @@ module pasientskyhosting/ps-kubectl-login
 go 1.16
 
 require (
-	github.com/PuerkitoBio/goquery v1.6.0 // indirect
-	github.com/headzoo/surf v1.0.0
-	github.com/headzoo/ut v0.0.0-20181013193318-a13b5a7a02ca // indirect
+	github.com/chromedp/cdproto v0.0.0-20231205062650-00455a960d61
+	github.com/chromedp/chromedp v0.9.3
 	github.com/logrusorgru/aurora v2.0.3+incompatible
-	github.com/manifoldco/promptui v0.8.0
 	github.com/spf13/cobra v1.1.1
-	gopkg.in/headzoo/surf.v1 v1.0.0
 )

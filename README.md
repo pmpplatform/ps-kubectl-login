@@ -20,17 +20,11 @@ A kubectl plugin for dex
 ```
 'aliases' should be a list of unique namespaces on the cluster
 
-# Releases
-
-### Build binaries
-* `make pack`
-
-### Create Github Release
-* Upload the binaries on the release
 
 ## How to use
-* rename the binary to kubectl-login and place somewhere in on your PATH
+* download a binary for your architecture from the releases page
+* rename the binary to `kubectl-login`, `chmod +x kubectl-login` and place the binary somewhere in on your PATH
 * create .kubectl-login.json in your home directory, or execute `kubectl login -u` to download the config file from this repo
-* execute `kubectl login [alias]` - e.g. `kubectl login development`
-* If your token has expired, you will be prompted for credentials. After login, your kube config will be updated with your new token and your context will be changed to the selected cluster/namespace.
-
+* execute `kubectl login -l` to see a list of clusters/namespaces
+* execute `kubectl login [alias]` - e.g. `kubectl login staging`
+* If your token has expired, you will be prompted for credentials in a browser window. After login, your kube config will be updated with your new token and your context will be changed to the selected cluster/namespace.
