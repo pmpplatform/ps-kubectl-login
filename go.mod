@@ -8,6 +8,6 @@ require (
 	github.com/headzoo/ut v0.0.0-20181013193318-a13b5a7a02ca // indirect
 	github.com/logrusorgru/aurora v2.0.3+incompatible
 	github.com/manifoldco/promptui v0.8.0
-	github.com/spf13/cobra v1.1.1
+	github.com/spf13/cobra v1.8.1
 	gopkg.in/headzoo/surf.v1 v1.0.0
 )
